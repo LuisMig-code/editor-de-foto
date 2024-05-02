@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editor de Fotos</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../static/styles.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <!-- Seção Editor Fotos -->
+        <div class="col-md-6">
+            <div class="form-container">
+                <h2>Editor de Fotos</h2>
+                <form id="photoForm" enctype="multipart/form-data" action="/processar_foto" method="POST">
+                    <div class="form-group">
+                        <label for="fileInput">Escolha uma ou mais fotos:</label>
+                        <input type="file" class="form-control-file" id="fileInput" name="fotos" accept=".jpg, .jpeg, .png , .rar" multiple>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="GrayScale" name="GrayScale">
+                            <label class="form-check-label" for="GrayScale">GrayScale</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="Sepia" name="Sepia">
+                            <label class="form-check-label" for="Sepia">Sépia</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="Blur" name="Blur">
+                            <label class="form-check-label" for="Blur">Blur</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="EdgeDetection" name="EdgeDetection">
+                            <label class="form-check-label" for="EdgeDetection">Edge Detection</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="ContrastAdjust" name="ContrastAdjust">
+                            <label class="form-check-label" for="ContrastAdjust">Ajuste de Contraste</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="Sharpen" name="Sharpen">
+                            <label class="form-check-label" for="Sharpen">Sharpen</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary botao-editar" onclick="editarFoto()" id="btn-editar">Editar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Seção Resultado -->
+        <div class="col-md-6">
+            <div class="output-container">
+                <h2>Resultado</h2>
+                <div id="output"></div>
+                <a href="#" id="downloadButton" class="btn btn-success download-button" download>Download</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="loader"></div>
+
+<script src="../static/script.js"></script>
+
+</body>
+</html>
